@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualFinlandDevelopment.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualFinlandDevelopment.Shared.UnitTests", "VirtualFinlandDevelopment.Shared.UnitTests\VirtualFinlandDevelopment.Shared.UnitTests.csproj", "{DB26CD0D-C8A5-40B4-B6B2-17C8DFF0943C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedTestApplication", "SharedTestApplication\SharedTestApplication.csproj", "{3D3F58C3-F43E-487C-BFC7-ABFE536896FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{DB26CD0D-C8A5-40B4-B6B2-17C8DFF0943C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB26CD0D-C8A5-40B4-B6B2-17C8DFF0943C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB26CD0D-C8A5-40B4-B6B2-17C8DFF0943C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D3F58C3-F43E-487C-BFC7-ABFE536896FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D3F58C3-F43E-487C-BFC7-ABFE536896FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D3F58C3-F43E-487C-BFC7-ABFE536896FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D3F58C3-F43E-487C-BFC7-ABFE536896FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
