@@ -19,7 +19,7 @@ internal class TestbedConsentProviderConfiguration : IConsentProviderConfigurati
     {
         _logger = logger;
         _jwksJsonUrl = settings.Value.ConsentJwksJsonUrl;
-        Issuer = settings.Value.Issuer;
+        Issuer = settings.Value.ConsentIssuer;
         ConsentVerifyUrl = settings.Value.ConsentVerifyUrl;
     }
 
@@ -58,6 +58,8 @@ internal class TestbedConsentProviderConfiguration : IConsentProviderConfigurati
                     N = k.N,
                     E = k.E
                 }).ToList();
+                
+                break;
             }
 
             await Task.Delay(ConfigUrlRetryWaitTime);
@@ -75,22 +77,23 @@ internal class TestbedConsentProviderConfiguration : IConsentProviderConfigurati
         public List<Jwk>? Keys { get; set; }
     }
 
+    // ReSharper disable once ClassNeverInstantiated.Local
     private sealed class Jwk
     {
+        [JsonPropertyName("kid")]
+        public string? Kid { get; set; }
+        
         [JsonPropertyName("kty")]
-        public string? Kty { get; }
+        public string? Kty { get; set; }
 
         [JsonPropertyName("use")]
-        public string? Use { get; }
-
-        [JsonPropertyName("kid")]
-        public string? Kid { get; }
-
+        public string? Use { get; set; }
+        
         [JsonPropertyName("n")]
-        public string? N { get; }
+        public string? N { get; set; }
 
         [JsonPropertyName("e")]
-        public string? E { get; }
+        public string? E { get; set; }
     }
 }
 
