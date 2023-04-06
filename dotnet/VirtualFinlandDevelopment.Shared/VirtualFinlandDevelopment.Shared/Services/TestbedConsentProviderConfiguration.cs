@@ -31,13 +31,11 @@ internal class TestbedConsentProviderConfiguration : IConsentProviderConfigurati
         _logger.LogDebug(
             "Trying to load public keys with jwks: {Jwks}, issuer: {Issuer} and consent verify url: {ConsentVerifyUrl}",
             _jwksJsonUrl, Issuer, ConsentVerifyUrl);
-        
-        Console.WriteLine("höh :)");
-        
+
         var httpClient = new HttpClient();
-        
+
         _logger.LogDebug("Sending request to base address: {Url}", httpClient.BaseAddress);
-        
+
         var httpResponse = await httpClient.GetAsync(_jwksJsonUrl);
 
         for (var retryCount = 0; retryCount < ConfigUrlMaxRetryCount; retryCount++)
@@ -58,7 +56,7 @@ internal class TestbedConsentProviderConfiguration : IConsentProviderConfigurati
                     N = k.N,
                     E = k.E
                 }).ToList();
-                
+
                 break;
             }
 
@@ -82,13 +80,13 @@ internal class TestbedConsentProviderConfiguration : IConsentProviderConfigurati
     {
         [JsonPropertyName("kid")]
         public string? Kid { get; set; }
-        
+
         [JsonPropertyName("kty")]
         public string? Kty { get; set; }
 
         [JsonPropertyName("use")]
         public string? Use { get; set; }
-        
+
         [JsonPropertyName("n")]
         public string? N { get; set; }
 
@@ -96,4 +94,3 @@ internal class TestbedConsentProviderConfiguration : IConsentProviderConfigurati
         public string? E { get; set; }
     }
 }
-

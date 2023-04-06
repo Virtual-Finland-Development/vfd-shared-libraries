@@ -49,7 +49,8 @@ public class ErrorHandlerMiddleware
                     break;
                 case BadRequestException e:
                     response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    e.ValidationErrors?.ForEach(o => validationErrorDetails.Add(o.Field, new List<string> { o.Message }));
+                    e.ValidationErrors?.ForEach(
+                        o => validationErrorDetails.Add(o.Field, new List<string> { o.Message }));
                     break;
                 default:
                     response.StatusCode = (int)HttpStatusCode.InternalServerError;
@@ -81,9 +82,8 @@ public class ErrorHandlerMiddleware
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     WriteIndented = true
                 });
-            
+
             await response.WriteAsync(result);
         }
     }
 }
-
