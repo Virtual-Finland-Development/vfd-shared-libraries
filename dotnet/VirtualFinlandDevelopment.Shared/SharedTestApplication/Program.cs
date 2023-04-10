@@ -12,10 +12,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient();
 
-builder.Services.RegisterTestbedConsentProvider(options =>
-{
-    builder.Configuration.GetSection("Testbed").Bind(options);
-});
+builder.Services.RegisterTestbedConsentProvider(
+    providerOptions => { builder.Configuration.GetSection("Testbed").Bind(providerOptions); },
+    portalOptions => { builder.Configuration.GetSection("ConsentPortalConfiguration").Bind(portalOptions); }
+);
 
 var app = builder.Build();
 
