@@ -36,7 +36,7 @@ public class VerifyConsentAuthorizationFilter : IAuthorizationFilter
                             throw new InvalidOperationException(
                                 $"Missing {nameof(_options.Value.Domain)} from consent portal configuration");
 
-        var dataProduct = _dataProduct ?? "test/lassipatanen/User/Profile";
+        var dataProduct = _dataProduct ?? throw new InvalidOperationException($"Data product name is not set");
         var consentUri = $"dpp://{application}@{consentDomain}/{dataProduct}";
 
         await _consentSecurityService.VerifyConsentTokenRequestHeaders(context.HttpContext.Request.Headers, consentUri);
