@@ -24,8 +24,11 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
-      - run: dotnet pack dotnet/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared --configuration Release --output ${{ env.NuGetDirectory }}
-      - name: Pack artifact
+      - name: Build solution
+        run: dotnet build dotnet/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared
+      - name: Pack package
+        run: dotnet pack dotnet/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared --configuration Release --output ${{ env.NuGetDirectory }}
+      - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: nuget
