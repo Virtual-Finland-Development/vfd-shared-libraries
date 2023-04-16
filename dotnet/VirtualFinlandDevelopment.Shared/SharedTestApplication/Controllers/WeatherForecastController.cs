@@ -24,8 +24,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public async Task<IEnumerable<WeatherForecast>> Get()
     {
-        await _securityService.VerifyConsentTokenRequestHeaders(Request.Headers,
-            "dpp://access_to_finland@testbed.fi/test/lassipatanen/User/Profile");
+        await _securityService.VerifyConsentTokenRequestHeaders(Request.Headers, "test/lassipatanen/User/Profile");
         
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

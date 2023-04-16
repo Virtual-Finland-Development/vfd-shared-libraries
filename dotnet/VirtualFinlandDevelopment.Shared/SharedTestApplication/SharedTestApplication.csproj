@@ -9,13 +9,16 @@
 
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-        <PackageReference Include="VirtualFinlandDevelopment.Shared" Version="1.0.0-local" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\VirtualFinlandDevelopment.Shared\VirtualFinlandDevelopment.Shared.csproj" />
     </ItemGroup>
 
 </Project>
