@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
-      - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
+      - run: dotnet pack dotnet/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared --configuration Release --output ${{ env.NuGetDirectory }}
       - name: Pack artifact
         uses: actions/upload-artifact@v3
         with:
@@ -42,7 +42,7 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Run tests
-        run: dotnet test --configuration Release
+        run: dotnet test dotnet/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared --configuration Release
 
   deploy:
     runs-on: ubuntu-latest
