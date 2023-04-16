@@ -1,7 +1,10 @@
 name: Public Nuget package
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Run the workflow manually
+  release:
+    types:
+      - published # Run the workflow when a new GitHub release is published
 
 env:
   NuGetDirectory: ${{ github.workspace}}/nuget
