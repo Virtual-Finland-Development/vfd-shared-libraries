@@ -1,4 +1,4 @@
-name: Public Nuget package
+name: Publish Nuget package
 
 on:
   workflow_dispatch: # Run the workflow manually
