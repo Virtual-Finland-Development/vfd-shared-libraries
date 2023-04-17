@@ -25,7 +25,7 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Build solution
-        run: dotnet build dotnet/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared
+        run: dotnet build dotnet/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared.csproj -c Release
       - name: Pack package
         run: dotnet pack dotnet/VirtualFinlandDevelopment.Shared/VirtualFinlandDevelopment.Shared --configuration Release --output ${{ env.NuGetDirectory }}
       - name: Upload artifact
