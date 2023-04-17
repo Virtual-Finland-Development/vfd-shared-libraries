@@ -64,6 +64,6 @@ jobs:
           dotnet-version: 6.0.x
       - name: Publish NuGet package
         run: |
-          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }})" -Recurse -Include *.nupkg)) {
+          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}") -Recurse -Include *.nupkg)) {
             dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source "${{ env.NuGetSource }}" --skip-duplicate
           }
