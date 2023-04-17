@@ -10,10 +10,6 @@ env:
   NuGetDirectory: ${{ github.workspace}}/nuget
   NuGetSource: https://nuget.pkg.github.com/Virtual-Finland-Development/index.json
 
-defaults: 
-  run:
-    shell: pwsh
-
 jobs:
   
   create_nuget:
@@ -64,6 +60,6 @@ jobs:
           dotnet-version: 6.0.x
       - name: Publish NuGet package
         run: |
-          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}") -Recurse -Include *.nupkg)) {
-            dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source "${{ env.NuGetSource }}" --skip-duplicate
-          }
+          for file in $(find "${{ env.NuGetDirectory }}" -name "*.nupkg" -type f); do
+            dotnet nuget push "$file" --api-key "${{ secrets.NUGET_APIKEY }}" --source "${{ env.NuGetSource }}" --skip-duplicate
+          done
