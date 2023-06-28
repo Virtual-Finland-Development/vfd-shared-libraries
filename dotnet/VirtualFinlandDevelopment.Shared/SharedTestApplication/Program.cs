@@ -1,5 +1,6 @@
 using VirtualFinlandDevelopment.Shared.Middlewares;
 using VirtualFinlandDevelopment.Shared.Services;
+using VirtualFinlandDevelopment.Shared.Services.Security.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient();
+
+builder.Services.RegisterSecurityFeatures(builder.Configuration);
+
+
+
+//builder.Services.RegisterSecurityFeatures(builder.Configuration);
+
+builder.Services.RegisterSecurityFeatures(
+    testbedOptions => { builder.Configuration.GetSection("Testbed").Bind(testbedOptions); },
+    sinunaOptions => { builder.Configuration.GetSection("Sinuna").Bind(sinunaOptions); },
+    suomiFiOptions => { builder.Configuration.GetSection("SuomiFi").Bind(suomiFiOptions); }
+);
 
 builder.Services.RegisterTestbedConsentProvider(
     providerOptions => { builder.Configuration.GetSection("Testbed").Bind(providerOptions); },
@@ -28,6 +41,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseErrorHandlerMiddleware();

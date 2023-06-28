@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VirtualFinlandDevelopment.Shared.Services;
 
@@ -33,5 +34,13 @@ public class WeatherForecastController : ControllerBase
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+    }
+
+    [HttpGet("Authorize")]
+    [Authorize]
+    public IActionResult GetAuthorizeResponse()
+    {
+        _logger.LogInformation("Authorized");
+        return new OkObjectResult(true);
     }
 }
